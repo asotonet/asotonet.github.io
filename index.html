@@ -1067,32 +1067,88 @@ fetchGitHubStats().then(stats => {
     if (stats) renderStats(stats);
 });
 
-// ---- TERMINAL TYPING ----
-const terminalLines = [
-    { type: 'prompt', text: '$ whoami' },
-    { type: 'output', text: 'alejandro.soto — Costa Rica' },
-    { type: 'prompt', text: '$ cat role.conf' },
-    { type: 'output', text: 'Network Engineer & Security Architect' },
-    { type: 'prompt', text: '$ cat skills.conf' },
-    { type: 'highlight', text: 'networking    ████████████░  95%' },
-    { type: 'highlight', text: 'security_arch ███████████░░  90%' },
-    { type: 'highlight', text: 'automation    ██████████░░░  85%' },
-    { type: 'highlight', text: 'cloud/iac     █████████░░░░  82%' },
-    { type: 'highlight', text: 'development   ████████░░░░░  78%' },
-    { type: 'prompt', text: '$ vendors --list' },
-    { type: 'output', text: 'PaloAlto Juniper F5 CrowdStrike ...' },
-    { type: 'cursor', text: '' }
-];
+// ---- TERMINAL: FETCH & PARSE skills.conf ----
+function parseSkillsConf(text) {
+    const result = { profile: {}, skills: {}, vendors: {}, status: {} };
+    let section = null;
+    text.split('\n').forEach(line => {
+        line = line.trim();
+        if (!line || line.startsWith('#')) return;
+        const secMatch = line.match(/^\[(\w+)\]$/);
+        if (secMatch) { section = secMatch[1]; return; }
+        const kvMatch = line.match(/^(\w+)\s*=\s*(.+)$/);
+        if (kvMatch && section && result[section] !== undefined) {
+            result[section][kvMatch[1]] = kvMatch[2].trim();
+        }
+    });
+    return result;
+}
 
-function typeTerminal() {
+function buildProgressBar(value, maxLen) {
+    const max = maxLen || 12;
+    const filled = Math.round((parseInt(value) / 100) * max);
+    return '█'.repeat(filled) + '░'.repeat(max - filled);
+}
+
+function buildTerminalLines(conf) {
+    const lines = [];
+
+    // whoami
+    lines.push({ type: 'prompt', text: 'whoami' });
+    const name = conf.profile.name || 'unknown';
+    const loc = conf.profile.location || '';
+    lines.push({ type: 'output', text: `${name} — ${loc}` });
+
+    // cat role
+    if (conf.profile.role) {
+        lines.push({ type: 'prompt', text: 'cat role.conf' });
+        lines.push({ type: 'output', text: conf.profile.role });
+    }
+
+    // cat skills.conf
+    lines.push({ type: 'prompt', text: 'cat skills.conf' });
+    const skillNames = Object.keys(conf.skills);
+    const maxKeyLen = Math.max(...skillNames.map(k => k.length));
+    skillNames.forEach(key => {
+        const val = parseInt(conf.skills[key]);
+        const label = key.padEnd(maxKeyLen);
+        const bar = buildProgressBar(val, 12);
+        const pct = String(val).padStart(3) + '%';
+        lines.push({ type: 'highlight', text: `${label}  ${bar}  ${pct}` });
+    });
+
+    // vendors --list
+    const allVendors = Object.values(conf.vendors);
+    if (allVendors.length) {
+        lines.push({ type: 'prompt', text: 'vendors --list' });
+        // Flatten and pick a sample to keep it compact
+        const flat = allVendors.join(', ').split(',').map(v => v.trim());
+        const unique = [...new Set(flat)];
+        const display = unique.slice(0, 6).join(', ') + (unique.length > 6 ? ' ...' : '');
+        lines.push({ type: 'output', text: display });
+    }
+
+    // status
+    if (conf.status.uptime) {
+        lines.push({ type: 'prompt', text: 'uptime' });
+        lines.push({ type: 'output', text: conf.status.uptime });
+    }
+
+    // cursor
+    lines.push({ type: 'cursor', text: '' });
+
+    return lines;
+}
+
+function renderTerminal(lines) {
     const body = document.getElementById('terminal-body');
     body.innerHTML = '';
-    terminalLines.forEach((line, i) => {
+    lines.forEach((line, i) => {
         const div = document.createElement('div');
         div.className = 'terminal-line';
-        div.style.animationDelay = `${i * 0.25}s`;
+        div.style.animationDelay = `${i * 0.2}s`;
         if (line.type === 'prompt') {
-            div.innerHTML = `<span class="terminal-prompt">❯</span> <span class="terminal-cmd">${line.text.slice(2)}</span>`;
+            div.innerHTML = `<span class="terminal-prompt">❯</span> <span class="terminal-cmd">${line.text}</span>`;
         } else if (line.type === 'cursor') {
             div.innerHTML = `<span class="terminal-prompt">❯</span> <span class="terminal-cursor"></span>`;
         } else {
@@ -1102,10 +1158,40 @@ function typeTerminal() {
     });
 }
 
+// Fallback lines in case fetch fails
+const fallbackLines = [
+    { type: 'prompt', text: 'whoami' },
+    { type: 'output', text: 'Alejandro Soto — Costa Rica' },
+    { type: 'prompt', text: 'cat skills.conf' },
+    { type: 'highlight', text: 'networking       ██████████░░   90%' },
+    { type: 'highlight', text: 'security_arch    ██████████░░   85%' },
+    { type: 'highlight', text: 'automation       █████████░░░   80%' },
+    { type: 'highlight', text: 'cloud_iac        █████████░░░   75%' },
+    { type: 'highlight', text: 'development      ███████░░░░░   65%' },
+    { type: 'cursor', text: '' }
+];
+
+let terminalLines = fallbackLines;
+
+// Try to fetch the real skills.conf from the same repo/site
+fetch('skills.conf')
+    .then(res => {
+        if (!res.ok) throw new Error('Not found');
+        return res.text();
+    })
+    .then(text => {
+        const conf = parseSkillsConf(text);
+        terminalLines = buildTerminalLines(conf);
+    })
+    .catch(() => {
+        // Use fallback — no problem
+    });
+
 const termObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
         if (e.isIntersecting) {
-            typeTerminal();
+            // Small delay to let fetch complete if it hasn't
+            setTimeout(() => renderTerminal(terminalLines), 300);
             termObs.unobserve(e.target);
         }
     });
