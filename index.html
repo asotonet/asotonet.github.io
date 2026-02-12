@@ -415,6 +415,7 @@
         }
         .skill-icon.infra { background: rgba(0,229,255,0.1); color: var(--accent-cyan); }
         .skill-icon.net { background: rgba(57,255,133,0.1); color: var(--accent-green); }
+        .skill-icon.cyber { background: rgba(255,94,160,0.1); color: var(--accent-pink); }
         .skill-icon.auto { background: rgba(167,139,250,0.1); color: var(--accent-purple); }
         .skill-icon.dev { background: rgba(255,144,82,0.1); color: var(--accent-orange); }
 
@@ -644,7 +645,7 @@
     <div class="container hero-content">
         <p class="hero-greeting">// hola mundo, soy</p>
         <h1 class="hero-name">Alejandro<br><span class="highlight">Soto</span></h1>
-        <p class="hero-tagline">Networking · Automatización · Infraestructura como Código. Transformando procesos manuales en flujos automatizados desde Costa Rica.</p>
+        <p class="hero-tagline">Networking · Ciberseguridad · Automatización · Infraestructura como Código. Transformando procesos manuales en flujos automatizados desde Costa Rica.</p>
         <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -684,8 +685,8 @@
         <div class="about-text reveal">
             <div class="section-label">Sobre mí</div>
             <h2 class="section-title">Redes, código y<br>automatización</h2>
-            <p>Profesional de tecnología con base en Costa Rica, enfocado en la intersección entre redes, ciberseguridad, cloud y automatización. Mi trabajo combina la administración de infraestructura de red, seguridad, orquestación de servicios en la nube y desarrollo de herramientas que simplifican la operación técnica.</p>
-            <p>Me especializo en transformar operaciones manuales en flujos automatizados, confiables y reproducibles — desde el provisioning de equipos de red con Ansible hasta el despliegue de clusters Kubernetes con Terraform.</p>
+            <p>Profesional de tecnología con base en Costa Rica, enfocado en la intersección entre redes, cloud y automatización. Mi trabajo combina la administración de infraestructura de red, seguridad, orquestación de servicios en la nube y desarrollo de herramientas que simplifican la operación técnica.</p>
+            <p>Me especializo en transformar operaciones manuales en flujos automatizados, confiables y reproducibles — desde el provisioning de equipos MikroTik con Ansible hasta el despliegue de clusters Kubernetes con Terraform.</p>
         </div>
         <div class="about-visual reveal">
             <div class="terminal">
@@ -712,9 +713,39 @@
         </div>
         <div class="skills-grid">
             <div class="skill-card reveal">
+                <div class="skill-icon net">🌐</div>
+                <h3>Networking</h3>
+                <p>Diseño, implementación y gestión de redes empresariales e ISP. Routing avanzado, switching y arquitecturas multi-vendor de alta disponibilidad.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">BGP</span>
+                    <span class="skill-tag">MPLS</span>
+                    <span class="skill-tag">SD-WAN</span>
+                    <span class="skill-tag">L2/L3 VPN</span>
+                    <span class="skill-tag">VRF</span>
+                    <span class="skill-tag">VPLS</span>
+                    <span class="skill-tag">Switching</span>
+                    <span class="skill-tag">Routing</span>
+                    <span class="skill-tag">Wireless</span>
+                    <span class="skill-tag">MikroTik</span>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon cyber">🛡️</div>
+                <h3>Ciberseguridad</h3>
+                <p>Consultoría y diseño de arquitecturas de seguridad, selección e integración de soluciones de protección perimetral, endpoints y monitoreo centralizado.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Firewall NGFW</span>
+                    <span class="skill-tag">SIEM/XDR</span>
+                    <span class="skill-tag">EDR</span>
+                    <span class="skill-tag">DNS Security</span>
+                    <span class="skill-tag">Zero Trust</span>
+                    <span class="skill-tag">Arquitectura de Seguridad</span>
+                </div>
+            </div>
+            <div class="skill-card reveal">
                 <div class="skill-icon infra">☁️</div>
                 <h3>Infraestructura & Cloud</h3>
-                <p>Provisioning declarativo de infraestructura cloud con enfoque en reproducibilidad y versionado.</p>
+                <p>Provisioning declarativo de infraestructura cloud con enfoque en reproducibilidad, versionado y orquestación de contenedores.</p>
                 <div class="skill-tags">
                     <span class="skill-tag">Terraform</span>
                     <span class="skill-tag">Docker</span>
@@ -724,26 +755,15 @@
                 </div>
             </div>
             <div class="skill-card reveal">
-                <div class="skill-icon net">🌐</div>
-                <h3>Networking & Seguridad</h3>
-                <p>Diseño, implementación y gestión de redes empresariales e ISP con equipos multi-vendor.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">MikroTik</span>
-                    <span class="skill-tag">FreeRADIUS</span>
-                    <span class="skill-tag">DNS</span>
-                    <span class="skill-tag">TCP/IP</span>
-                    <span class="skill-tag">SNMP</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
                 <div class="skill-icon auto">⚙️</div>
                 <h3>Automatización</h3>
-                <p>Orquestación de configuraciones, despliegues y operaciones de red a escala.</p>
+                <p>Orquestación de configuraciones, despliegues y operaciones de red a escala con metodologías ágiles.</p>
                 <div class="skill-tags">
                     <span class="skill-tag">Ansible</span>
                     <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Shell</span>
+                    <span class="skill-tag">Bash</span>
                     <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Scrum</span>
                 </div>
             </div>
             <div class="skill-card reveal">
@@ -990,9 +1010,10 @@ const terminalLines = [
     { type: 'output', text: 'alejandro.soto — Costa Rica' },
     { type: 'prompt', text: '$ cat skills.conf' },
     { type: 'highlight', text: 'networking    ████████████░  92%' },
-    { type: 'highlight', text: 'automation    ███████████░░  88%' },
-    { type: 'highlight', text: 'cloud/iac     ██████████░░░  85%' },
-    { type: 'highlight', text: 'development   █████████░░░░  78%' },
+    { type: 'highlight', text: 'cybersecurity ███████████░░  88%' },
+    { type: 'highlight', text: 'automation    ██████████░░░  85%' },
+    { type: 'highlight', text: 'cloud/iac     █████████░░░░  82%' },
+    { type: 'highlight', text: 'development   ████████░░░░░  78%' },
     { type: 'prompt', text: '$ uptime' },
     { type: 'output', text: 'always building...' },
     { type: 'cursor', text: '' }
