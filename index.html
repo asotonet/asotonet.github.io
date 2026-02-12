@@ -645,7 +645,7 @@
     <div class="container hero-content">
         <p class="hero-greeting">// hola mundo, soy</p>
         <h1 class="hero-name">Alejandro<br><span class="highlight">Soto</span></h1>
-        <p class="hero-tagline">Networking · Ciberseguridad · Automatización · Infraestructura como Código. Transformando procesos manuales en flujos automatizados desde Costa Rica.</p>
+        <p class="hero-tagline">Networking · Arquitectura de Ciberseguridad · Automatización · Infraestructura como Código. Diseñando redes seguras y operaciones automatizadas desde Costa Rica.</p>
         <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">
                 <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -661,20 +661,20 @@
 <div class="container">
     <div class="stats-bar reveal">
         <div class="stat-item">
-            <div class="stat-number" data-target="10">0</div>
-            <div class="stat-label">Años Exp.</div>
+            <div class="stat-number" id="stat-repos" data-dynamic>—</div>
+            <div class="stat-label">Repos Públicos</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number" data-target="31">0</div>
-            <div class="stat-label">Repos</div>
+            <div class="stat-number" id="stat-stars" data-dynamic>—</div>
+            <div class="stat-label">Stars</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number" data-target="8">0</div>
-            <div class="stat-label">Tecnologías</div>
+            <div class="stat-number" id="stat-followers" data-dynamic>—</div>
+            <div class="stat-label">Followers</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">∞</div>
-            <div class="stat-label">Automatizaciones</div>
+            <div class="stat-number" id="stat-languages" data-dynamic>—</div>
+            <div class="stat-label">Lenguajes</div>
         </div>
     </div>
 </div>
@@ -684,9 +684,9 @@
     <div class="container about-grid">
         <div class="about-text reveal">
             <div class="section-label">Sobre mí</div>
-            <h2 class="section-title">Redes, código y<br>automatización</h2>
-            <p>Profesional de tecnología con base en Costa Rica, enfocado en la intersección entre redes, cloud y automatización. Mi trabajo combina la administración de infraestructura de red, seguridad, orquestación de servicios en la nube y desarrollo de herramientas que simplifican la operación técnica.</p>
-            <p>Me especializo en transformar operaciones manuales en flujos automatizados, confiables y reproducibles — desde el provisioning de equipos MikroTik con Ansible hasta el despliegue de clusters Kubernetes con Terraform.</p>
+            <h2 class="section-title">Redes, seguridad y<br>automatización</h2>
+            <p>Ingeniero de redes y consultor de arquitectura de ciberseguridad con base en Costa Rica. Mi trabajo abarca el diseño de infraestructuras de red complejas, la evaluación e integración de soluciones de seguridad empresarial y la automatización de operaciones a escala.</p>
+            <p>Cuento con experiencia en entornos multi-vendor — desde plataformas de routing y switching hasta firewalls de nueva generación, balanceadores de carga, soluciones de visibilidad de red y protección de endpoints. Mi enfoque combina la profundidad técnica a nivel de protocolo con una visión estratégica de arquitectura.</p>
         </div>
         <div class="about-visual reveal">
             <div class="terminal">
@@ -715,7 +715,7 @@
             <div class="skill-card reveal">
                 <div class="skill-icon net">🌐</div>
                 <h3>Networking</h3>
-                <p>Diseño, implementación y gestión de redes empresariales e ISP. Routing avanzado, switching y arquitecturas multi-vendor de alta disponibilidad.</p>
+                <p>Diseño e implementación de redes empresariales, ISP y data center con arquitecturas multi-vendor de alta disponibilidad y routing avanzado.</p>
                 <div class="skill-tags">
                     <span class="skill-tag">BGP</span>
                     <span class="skill-tag">MPLS</span>
@@ -723,23 +723,25 @@
                     <span class="skill-tag">L2/L3 VPN</span>
                     <span class="skill-tag">VRF</span>
                     <span class="skill-tag">VPLS</span>
-                    <span class="skill-tag">Switching</span>
-                    <span class="skill-tag">Routing</span>
-                    <span class="skill-tag">Wireless</span>
+                    <span class="skill-tag">Juniper</span>
+                    <span class="skill-tag">Extreme Networks</span>
                     <span class="skill-tag">MikroTik</span>
+                    <span class="skill-tag">F5 Networks</span>
                 </div>
             </div>
             <div class="skill-card reveal">
                 <div class="skill-icon cyber">🛡️</div>
                 <h3>Ciberseguridad</h3>
-                <p>Consultoría y diseño de arquitecturas de seguridad, selección e integración de soluciones de protección perimetral, endpoints y monitoreo centralizado.</p>
+                <p>Consultoría y diseño de arquitecturas de seguridad empresarial. Evaluación, selección e integración de plataformas de protección perimetral, endpoints y monitoreo.</p>
                 <div class="skill-tags">
-                    <span class="skill-tag">Firewall NGFW</span>
+                    <span class="skill-tag">Palo Alto</span>
+                    <span class="skill-tag">CrowdStrike</span>
+                    <span class="skill-tag">WatchGuard</span>
+                    <span class="skill-tag">Netscout</span>
                     <span class="skill-tag">SIEM/XDR</span>
                     <span class="skill-tag">EDR</span>
-                    <span class="skill-tag">DNS Security</span>
                     <span class="skill-tag">Zero Trust</span>
-                    <span class="skill-tag">Arquitectura de Seguridad</span>
+                    <span class="skill-tag">NGFW</span>
                 </div>
             </div>
             <div class="skill-card reveal">
@@ -982,40 +984,103 @@ const revealObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 reveals.forEach(el => revealObs.observe(el));
 
-// ---- COUNTER ANIMATION ----
-const counters = document.querySelectorAll('.stat-number[data-target]');
-const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
-            const target = +e.target.dataset.target;
-            let current = 0;
-            const step = Math.max(1, Math.floor(target / 40));
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                e.target.textContent = current + '+';
-            }, 30);
-            counterObs.unobserve(e.target);
+// ---- GITHUB DYNAMIC STATS ----
+const GITHUB_USER = 'asotonet';
+
+async function fetchGitHubStats() {
+    try {
+        // Fetch user profile
+        const userRes = await fetch(`https://api.github.com/users/${GITHUB_USER}`);
+        const user = await userRes.json();
+
+        // Fetch all public repos (paginated)
+        let repos = [];
+        let page = 1;
+        let hasMore = true;
+        while (hasMore) {
+            const reposRes = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&page=${page}`);
+            const batch = await reposRes.json();
+            if (!Array.isArray(batch) || batch.length === 0) { hasMore = false; break; }
+            repos = repos.concat(batch);
+            hasMore = batch.length === 100;
+            page++;
         }
+
+        // Calculate total stars
+        const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+
+        // Collect unique languages (excluding null)
+        const languages = new Set(repos.map(r => r.language).filter(Boolean));
+
+        return {
+            repos: user.public_repos || repos.length,
+            stars: totalStars,
+            followers: user.followers || 0,
+            languages: languages.size
+        };
+    } catch (err) {
+        console.warn('GitHub API error, using fallback:', err);
+        return null;
+    }
+}
+
+function animateCounter(el, target) {
+    const duration = 1200;
+    const start = performance.now();
+    const update = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(ease * target);
+        el.textContent = current;
+        if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+}
+
+function renderStats(stats) {
+    const entries = [
+        { id: 'stat-repos', value: stats.repos },
+        { id: 'stat-stars', value: stats.stars },
+        { id: 'stat-followers', value: stats.followers },
+        { id: 'stat-languages', value: stats.languages }
+    ];
+    entries.forEach(({ id, value }) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        // Animate when the stat bar scrolls into view
+        const obs = new IntersectionObserver((ents) => {
+            ents.forEach(e => {
+                if (e.isIntersecting) {
+                    animateCounter(el, value);
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        obs.observe(el);
     });
-}, { threshold: 0.5 });
-counters.forEach(c => counterObs.observe(c));
+}
+
+// Fetch and render
+fetchGitHubStats().then(stats => {
+    if (stats) renderStats(stats);
+});
 
 // ---- TERMINAL TYPING ----
 const terminalLines = [
     { type: 'prompt', text: '$ whoami' },
     { type: 'output', text: 'alejandro.soto — Costa Rica' },
+    { type: 'prompt', text: '$ cat role.conf' },
+    { type: 'output', text: 'Network Engineer & Security Architect' },
     { type: 'prompt', text: '$ cat skills.conf' },
-    { type: 'highlight', text: 'networking    ████████████░  92%' },
-    { type: 'highlight', text: 'cybersecurity ███████████░░  88%' },
+    { type: 'highlight', text: 'networking    ████████████░  95%' },
+    { type: 'highlight', text: 'security_arch ███████████░░  90%' },
     { type: 'highlight', text: 'automation    ██████████░░░  85%' },
     { type: 'highlight', text: 'cloud/iac     █████████░░░░  82%' },
     { type: 'highlight', text: 'development   ████████░░░░░  78%' },
-    { type: 'prompt', text: '$ uptime' },
-    { type: 'output', text: 'always building...' },
+    { type: 'prompt', text: '$ vendors --list' },
+    { type: 'output', text: 'PaloAlto Juniper F5 CrowdStrike ...' },
     { type: 'cursor', text: '' }
 ];
 
